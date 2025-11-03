@@ -99,12 +99,12 @@
 
         h1 {
             text-align: center;
-            font-size: 56px;
-            margin: 50px 0;
+            font-size: 56px;            margin: 50px 0;
             letter-spacing: 8px;
             font-weight: 300;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            background: linear-gradient(to right, #f4e4c1, #d4af37, #f4e4c1);
+        background: white;
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
