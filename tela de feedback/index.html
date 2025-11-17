@@ -13,7 +13,11 @@
 </head>
 <body>
     <header>
-        <nav>
+        <div class="logo">
+            <img src="imagens/logo4 (1).png" alt="Casa Della Pasta Logo">
+        </div>
+        
+        <nav id="mainNav">
             <a href="#">Início</a>
             <span class="separator">|</span>
             <a href="#">Cardápio</a>
@@ -26,6 +30,12 @@
             <span class="separator">|</span>
             <a href="#">Acessibilidade</a>
         </nav>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <h1>FEEDBACKS</h1>
@@ -101,9 +111,8 @@
             </div>
         </div>
     </div>
-
     <script>
-        const stars = document.querySelectorAll('.star');
+         const stars = document.querySelectorAll('.star');
         let selectedRating = 0;
 
         stars.forEach(star => {
@@ -153,6 +162,28 @@
             textarea.value = '';
             selectedRating = 0;
             updateStars();
+        });
+
+        // Menu hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                mainNav.classList.remove('active');
+            }
         });
     </script>
 </body>
