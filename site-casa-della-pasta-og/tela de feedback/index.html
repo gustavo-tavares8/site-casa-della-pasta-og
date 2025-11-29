@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imagens/logo4 (1).png" alt="Casa Della Pasta Logo">
+        </div>
+        
+        <nav id="mainNav">
+            <a href="#">Início</a>
+       
+            <a href="#">Cardápio</a>
+         
+            <a href="#">Faça Sua Reserva</a>
+          
+            <a href="#">Fale Conosco</a>
+           
+            <a href="#">Eventos</a>
+    
+        </nav>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <h1>FEEDBACKS</h1>
+
+    <div class="container">
+        <div class="left-section">
+            <h2 class="section-title">DEIXE SEU FEEDBACK</h2>
+            
+            <div class="feedback-form">
+                <div class="user-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                
+                <div class="stars">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
+                </div>
+                
+                <textarea placeholder="Nos conte da sua experiência! Adoraríamos saber sua opinião..."></textarea>
+                
+                <button class="submit-btn">Enviar Feedback</button>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <h2 class="section-title">ÚLTIMOS FEEDBACKS</h2>
+            
+            <div class="feedback-item">
+                <div class="feedback-avatar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="feedback-stars">★ ★ ★ ★ ★</div>
+                    <div class="feedback-bubble">
+                        Fui com minha família e todos adoraram. O tiramisù fechou a noite com chave de ouro.
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-item">
+                <div class="feedback-avatar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="feedback-stars">★ ★ ★ ★ ★</div>
+                    <div class="feedback-bubble">
+                        Atendimento impecável e muito simpático. Ragu impecável e tudo fresco!
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-item">
+                <div class="feedback-avatar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="feedback-stars">★ ★ ★ ★ ★</div>
+                    <div class="feedback-bubble">
+                        Comida autêntica italiana, experiência incrível e ambiente acolhedor.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+         const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('clicr.k', function() {
+                selectedRating = parseInt(this.dataset.rating);
+                updateStars();
+            });
+
+            star.addEventListener('mouseenter', function() {
+                const rating = parseInt(this.dataset.rating);
+                highlightStars(rating);
+            });
+        });
+
+        document.querySelector('.stars').addEventListener('mouseleave', function() {
+            updateStars();
+        });
+
+        function highlightStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.textContent = '★';
+                    star.classList.add('active');
+                } else {
+                    star.textContent = '☆';
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function updateStars() {
+            highlightStars(selectedRating);
+        }
+
+        // Botão de envio
+        document.querySelector('.submit-btn').addEventListener('click', function() {
+            const textarea = document.querySelector('textarea');
+            if (selectedRating === 0) {
+                alert('Por favor, selecione uma avaliação em estrelas!');
+                return;
+            }
+            if (textarea.value.trim() === '') {
+                alert('Por favor, escreva seu comentário!');
+                return;
+            }
+            alert('Obrigado pelo seu feedback! ⭐');
+            textarea.value = '';
+            selectedRating = 0;
+            updateStars();
+        });
+
+        // Menu hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+            });
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                mainNav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
